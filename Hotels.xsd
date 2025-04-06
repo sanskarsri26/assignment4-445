@@ -29,7 +29,7 @@
               </xs:element>
             </xs:sequence>
             <!-- Required attribute for Hotel -->
-            <xs:attribute name="Rating" type="xs:decimal" use="required"/>
+            <xs:attribute name="Rating" type="xs:decimal" use="optional"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
