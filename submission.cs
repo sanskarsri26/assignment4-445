@@ -65,13 +65,29 @@ namespace ConsoleApp1
         }
 
         public static string Xml2Json(string xmlUrl)
-        {          
+        {
             try
             {
                 using (XmlReader reader = XmlReader.Create(xmlUrl))
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(reader);
+
+                    // Remove the XML declaration
+                    XmlDeclaration decl = doc.FirstChild as XmlDeclaration;
+                    if (decl != null)
+                        doc.RemoveChild(decl);
+
+                    // Wrap it in a root "Hotels" node if not already
+                    if (doc.DocumentElement.Name != "Hotels")
+                    {
+                        XmlElement root = doc.CreateElement("Hotels");
+                        XmlNode imported = doc.ImportNode(doc.DocumentElement, true);
+                        root.AppendChild(imported);
+                        doc.RemoveAll();
+                        doc.AppendChild(root);
+                    }
+
                     string jsonText = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.Indented, true);
                     return jsonText;
                 }
@@ -81,6 +97,7 @@ namespace ConsoleApp1
                 return $"Exception: {ex.Message}";
             }
         }
+
     }
 
 }
