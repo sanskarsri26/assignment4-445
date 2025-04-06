@@ -36,4 +36,28 @@
       <Zip>85031</Zip>
     </Address>
   </Hotel>
+
+    <Hotel>
+    <Name>Motel 5</Name>
+    <Phone>602-123-4567</Phone>
+    <Address>
+      <Number>1530</Number>
+      <Street>N 52nd Dr</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85031</Zip>
+    </Address>
+  </Hotel>
+
+    <Hotel>
+    <Name>Motel 4</Name>
+    <Phone>602-123-4567</Phone>
+    <Address>
+      <Number>1530</Number>
+      <Street>N 52nd Dr</Street>
+      <City>Phoenix</City>
+      <State>AZ</State>
+      <Zip>85031</Zip>
+    </Address>
+  </Hotel>
 </Hotels>
