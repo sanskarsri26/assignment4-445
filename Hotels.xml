@@ -26,7 +26,7 @@
   <Hotel Rating="3.9">
     <Name>Sunset Lodge</Name>
     <Phone>602-333-4444</Phone>
-    <Address>
+    <Address NearstAirport="Mesa Gateway">
       <Number>303</Number>
       <Street>Apache Blvd</Street>
       <City>Tempe</City>
@@ -49,7 +49,7 @@
   <Hotel>
     <Name>Budget Stay</Name>
     <Phone>602-777-1234</Phone>
-    <Address>
+    <Address NearstAirport="Mesa Gateway">
       <Number>505</Number>
       <Street>5th Ave</Street>
       <City>Phoenix</City>
@@ -71,7 +71,7 @@
   <Hotel Rating="4.1">
     <Name>Valley Suites</Name>
     <Phone>480-000-1234</Phone>
-    <Address>
+    <Address NearstAirport="Mesa Gateway">
       <Number>707</Number>
       <Street>Valley Rd</Street>
       <City>Tempe</City>
@@ -82,7 +82,7 @@
   <Hotel Rating="3.8">
     <Name>Downtown Inn</Name>
     <Phone>602-321-0000</Phone>
-    <Address>
+    <Address NearstAirport="Mesa Gateway">
       <Number>808</Number>
       <Street>Washington St</Street>
       <City>Phoenix</City>
@@ -105,7 +105,7 @@
   <Hotel Rating="3.6">
     <Name>Cozy Corner</Name>
     <Phone>602-222-3333</Phone>
-    <Address>
+    <Address NearstAirport="Mesa Gateway">
       <Number>1001</Number>
       <Street>Cozy Ln</Street>
       <City>Phoenix</City>

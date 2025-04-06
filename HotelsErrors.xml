@@ -26,7 +26,7 @@
   <Hotel Rating="3.0">
     <Name>Motel 6</Name>
     <Phone>602-123-4567</Phone>
-    <Address> <!-- Error 4: address not closed -->
+    <Address NearstAirport="Phoenix Sky Harbor"> <!-- Error 4: address not closed -->
       <Number>1530</Number>
       <Street>N 52nd Dr</Street>
       <City>Phoenix</City>
