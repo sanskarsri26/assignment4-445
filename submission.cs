@@ -3,7 +3,7 @@ using System.Xml.Schema;
 using System.Xml;
 using Newtonsoft.Json;
 using System.IO;
-
+using System.Text;
 
 
 /**
@@ -17,28 +17,31 @@ namespace ConsoleApp1
 {
     public class Program
     {
+        // These URLs must point to your remotely hosted files.
         public static string xmlURL = "https://sanskarsri26.github.io/assignment4-445/Hotels.xml";
         public static string xmlErrorURL = "https://sanskarsri26.github.io/assignment4-445/HotelsErrors.xml";
         public static string xsdURL = "https://sanskarsri26.github.io/assignment4-445/Hotels.xsd";
 
         public static void Main(string[] args)
         {
+            // 1. Validate the correct XML file against the schema.
             string result = Verification(xmlURL, xsdURL);
-            Console.WriteLine(result);
+            Console.WriteLine(result); // Expected to output "No Error" if valid
 
-
+            // 2. Validate the erroneous XML file. Expected to show error messages.
             result = Verification(xmlErrorURL, xsdURL);
             Console.WriteLine(result);
 
-
+            // 3. Convert the correct XML file to JSON.
             result = Xml2Json(xmlURL);
             Console.WriteLine(result);
         }
 
-        // Q2.1
+        // Q2.1: Validates an XML file using the provided XSD schema.
+        // Returns "No Error" if the XML file is valid; otherwise, returns the error messages.
         public static string Verification(string xmlUrl, string xsdUrl)
         {
-        try
+           try
             {
                 XmlReaderSettings settings = new XmlReaderSettings();
                 settings.Schemas.Add(null, xsdUrl);
@@ -64,40 +67,16 @@ namespace ConsoleApp1
             }
         }
 
+        // Q2.2: Converts the XML file into a JSON string.
+        // The JSON text is formatted so that it can be de-serialized by JsonConvert.DeserializeXmlNode.
         public static string Xml2Json(string xmlUrl)
         {
-            try
-            {
-                using (XmlReader reader = XmlReader.Create(xmlUrl))
-                {
-                    XmlDocument doc = new XmlDocument();
-                    doc.Load(reader);
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlUrl);
 
-                    // Remove the XML declaration
-                    XmlDeclaration decl = doc.FirstChild as XmlDeclaration;
-                    if (decl != null)
-                        doc.RemoveChild(decl);
-
-                    // Wrap it in a root "Hotels" node if not already
-                    if (doc.DocumentElement.Name != "Hotels")
-                    {
-                        XmlElement root = doc.CreateElement("Hotels");
-                        XmlNode imported = doc.ImportNode(doc.DocumentElement, true);
-                        root.AppendChild(imported);
-                        doc.RemoveAll();
-                        doc.AppendChild(root);
-                    }
-
-                    string jsonText = JsonConvert.SerializeXmlNode(doc, Newtonsoft.Json.Formatting.Indented, true);
-                    return jsonText;
-                }
-            }
-            catch (Exception ex)
-            {
-                return $"Exception: {ex.Message}";
-            }
+            string jsonText = JsonConvert.SerializeXmlNode(doc);
+            // The returned jsonText needs to be de-serializable by Newtonsoft.Json package. (JsonConvert.DeserializeXmlNode(jsonText))
+            return jsonText;
         }
-
     }
-
 }
