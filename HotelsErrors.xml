@@ -5,7 +5,7 @@
     <Name>Duplicate Name</Name> <!-- Error 5: Duplicate Name element -->
     <Phone>480-968-8885</Phone>
     <Phone>800-937-8461</Phone>
-    <Address NearestAirport="Sky Harbor">
+    <Address NearstAirport="Sky Harbor">
       <Number>11</Number>
       <Street>E 7th St</Street>
       <City>Tempe</City>
@@ -15,7 +15,7 @@
   </Hotel>
   <Hotel> <!-- Error 2: missing required Rating attribute -->
     <Name>Hyatt Place</Name>
-    <Address NearestAirport="Phoenix Sky Harbor"> <!-- Error 3: missing Phone -->
+    <Address NearstAirport="Phoenix Sky Harbor"> <!-- Error 3: missing Phone -->
       <Number>7300</Number>
       <Street>E Evans Rd</Street>
       <City>Scottsdale</City>
