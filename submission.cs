@@ -67,16 +67,14 @@ namespace ConsoleApp1
             }
         }
 
-        // Q2.2: Converts the XML file into a JSON string.
-        // The JSON text is formatted so that it can be de-serialized by JsonConvert.DeserializeXmlNode.
         public static string Xml2Json(string xmlUrl)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load(xmlUrl);
+            XmlDocument d = new XmlDocument();
+            d.Load(xmlUrl);
 
-            string jsonText = JsonConvert.SerializeXmlNode(doc);
-            // The returned jsonText needs to be de-serializable by Newtonsoft.Json package. (JsonConvert.DeserializeXmlNode(jsonText))
-            return jsonText;
+            string j = JsonConvert.SerializeXmlNode(d);
+
+            return j;
         }
     }
 }
