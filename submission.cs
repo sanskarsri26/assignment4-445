@@ -45,7 +45,7 @@ namespace ConsoleApp1
             {
                 XmlReaderSettings settings = new XmlReaderSettings();
                 settings.Schemas.Add(null, xsdUrl);
-                settings.ValidationType = ValidationType.Schema;
+                settings.ValidationType = ValidationType.Schema; 
 
                 string errorMessage = "No Error";
 

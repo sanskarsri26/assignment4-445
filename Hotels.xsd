@@ -4,7 +4,7 @@
   <!-- Root element: Hotels -->
   <xs:element name="Hotels">
     <xs:complexType>
-      <xs:sequence>
+      <xs:sequence> 
         <!-- Hotel element can occur multiple times -->
         <xs:element name="Hotel" maxOccurs="unbounded">
           <xs:complexType>

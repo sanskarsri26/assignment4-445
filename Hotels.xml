@@ -72,7 +72,7 @@
     <Name>Valley Suites</Name>
     <Phone>480-000-1234</Phone>
     <Address NearstAirport="Mesa Gateway">
-      <Number>707</Number>
+      <Number>707</Number> 
       <Street>Valley Rd</Street>
       <City>Tempe</City>
       <State>AZ</State>
