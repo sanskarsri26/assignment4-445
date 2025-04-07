@@ -3,7 +3,6 @@
   <Hotel Rating="4.5">
     <Name>Hotel Phoenix</Name>
     <Phone>602-123-4567</Phone>
-    <Phone>602-765-4321</Phone>
     <Address NearstAirport="Sky Harbor">
       <Number>101</Number>
       <Street>Main St</Street>
@@ -93,7 +92,6 @@
   <Hotel Rating="4.4">
     <Name>Riverside Resort</Name>
     <Phone>480-543-6789</Phone>
-    <Phone>480-543-6790</Phone>
     <Address NearstAirport="Mesa Gateway">
       <Number>909</Number>
       <Street>Riverside Dr</Street>

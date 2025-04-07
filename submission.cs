@@ -37,29 +37,29 @@ namespace ConsoleApp1
             Console.WriteLine(result);
         }
 
-        // Q2.1: Validates an XML file using the provided XSD schema.
-        // Returns "No Error" if the XML file is valid; otherwise, returns the error messages.
         public static string Verification(string xmlUrl, string xsdUrl)
         {
            try
             {
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.Schemas.Add(null, xsdUrl);
-                settings.ValidationType = ValidationType.Schema; 
+                XmlReaderSettings s = new XmlReaderSettings();
+                s.Schemas.Add(null, xsdUrl);
+                s.ValidationType = ValidationType.Schema; 
 
-                string errorMessage = "No Error";
+                string ee = "No Error";
 
-                settings.ValidationEventHandler += (sender, args) =>
+                s.ValidationEventHandler += (sender, args) =>
                 {
-                    errorMessage = args.Message;
+                    ee = args.Message;
                 };
 
-                using (XmlReader reader = XmlReader.Create(xmlUrl, settings))
+                using (XmlReader reader = XmlReader.Create(xmlUrl, s))
                 {
-                    while (reader.Read()) { }
+                    while (reader.Read()) 
+                    {
+                    }
                 }
 
-                return errorMessage;
+                return ee;
             }
             catch (Exception ex)
             {
@@ -72,9 +72,7 @@ namespace ConsoleApp1
             XmlDocument d = new XmlDocument();
             d.Load(xmlUrl);
 
-            string j = JsonConvert.SerializeXmlNode(d);
-
-            return j;
+            return (JsonConvert.SerializeXmlNode(d));
         }
     }
 }
