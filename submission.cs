@@ -17,42 +17,38 @@ namespace ConsoleApp1
 {
     public class Program
     {
-        // These URLs must point to your remotely hosted files.
         public static string xmlURL = "https://sanskarsri26.github.io/assignment4-445/Hotels.xml";
         public static string xmlErrorURL = "https://sanskarsri26.github.io/assignment4-445/HotelsErrors.xml";
         public static string xsdURL = "https://sanskarsri26.github.io/assignment4-445/Hotels.xsd";
 
         public static void Main(string[] args)
         {
-            // 1. Validate the correct XML file against the schema.
             string result = Verification(xmlURL, xsdURL);
-            Console.WriteLine(result); // Expected to output "No Error" if valid
+            Console.WriteLine(result); 
 
-            // 2. Validate the erroneous XML file. Expected to show error messages.
             result = Verification(xmlErrorURL, xsdURL);
             Console.WriteLine(result);
 
-            // 3. Convert the correct XML file to JSON.
             result = Xml2Json(xmlURL);
             Console.WriteLine(result);
         }
 
         public static string Verification(string xmlUrl, string xsdUrl)
         {
-           try
+           try      //try method
             {
-                XmlReaderSettings s = new XmlReaderSettings();
-                s.Schemas.Add(null, xsdUrl);
-                s.ValidationType = ValidationType.Schema; 
+                XmlReaderSettings s = new XmlReaderSettings();      //initialising 
+                s.Schemas.Add(null, xsdUrl);        //adding to schema
+                s.ValidationType = ValidationType.Schema;       // starting validation
 
-                string ee = "No Error";
+                string ee = "No Error";         //storing error message
 
-                s.ValidationEventHandler += (sender, args) =>
+                s.ValidationEventHandler += (sender, args) =>           //validation event handler
                 {
-                    ee = args.Message;
+                    ee = args.Message;          //first validation error store
                 };
 
-                using (XmlReader reader = XmlReader.Create(xmlUrl, s))
+                using (XmlReader reader = XmlReader.Create(xmlUrl, s))      //creating XmlReader with validation
                 {
                     while (reader.Read()) 
                     {
@@ -61,18 +57,18 @@ namespace ConsoleApp1
 
                 return ee;
             }
-            catch (Exception ex)
+            catch (Exception ex)            // catch method
             {
-                return $"Exception: {ex.Message}";
+                return $"Exception: {ex.Message}";      //return if error found
             }
         }
 
         public static string Xml2Json(string xmlUrl)
         {
-            XmlDocument d = new XmlDocument();
-            d.Load(xmlUrl);
+            XmlDocument d = new XmlDocument();      // DEFINING  a XmlDocument object
+            d.Load(xmlUrl);             //loading it
 
-            return (JsonConvert.SerializeXmlNode(d));
+            return (JsonConvert.SerializeXmlNode(d));       //returning the object d after SerializeXmlNode
         }
     }
 }
